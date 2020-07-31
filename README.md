@@ -1,3 +1,7 @@
+Static Project ---> Portfolio of Asif Haider (@asifhaider995)
+
+# This project is incomplete, thank you
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
