@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     textAlign: 'center',
     width: '70%',
-    padding: '2rem',
+    padding: '3.5rem',
     backgroundColor: 'lightgrey',
     borderRadius: '1rem',
     [theme.breakpoints.down('sm')]:{
-      width: '100%'
+      width: '100%',
     }
   },
   typoGrid: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   typo : {
     margin: '4rem',
     padding: '4rem',
-    fontFamily: 'Oxygen',
+    fontFamily: 'Cambria',
     [theme.breakpoints.down('sm')]:{
       padding: '0',
       margin: '2rem 0',
@@ -58,12 +58,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]:{
       paddingTop: '2rem',
-      marginBottom: '-1rem'
+      marginBottom: '-1rem',
+      width: '100%'
     }
   },
   btn : {
     width: '15rem',
-    height: '100%'
+    height: '100%',
+    [theme.breakpoints.down('sm')]:{
+      width: '85%',
+      height: 'auto'
+    }
   }
 }))
 

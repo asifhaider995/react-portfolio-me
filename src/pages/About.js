@@ -1,10 +1,10 @@
 import React from 'react'
-import {Grid, Typography, Avatar, Icon, Button, makeStyles} from '@material-ui/core'
+import {Grid, Paper, Typography, Avatar, Icon, Button, makeStyles} from '@material-ui/core'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 import AvatarImg from '../assets/AvatarImg.jpg'
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#F0F0F0',
     height: '45rem',
     [theme.breakpoints.down('sm')]:{
-      height: '90rem'
+      height: '84rem'
     }
   },
   outerGrid: {
@@ -63,21 +63,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1rem',
     [theme.breakpoints.down('sm')]:{
       display: 'inline',
-      margin: '0'
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: '0',
     }
   },
   mainContent : {
     display: 'inline',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '1.5rem',
+    padding: '1rem',
     margin: '0 1rem',
-    backgroundColor: 'lightgrey',
     heigth: '100%',
     borderRadius: '.75rem',
     [theme.breakpoints.down('sm')]:{
       display: 'flex',
-      padding: '1rem 0',
+      padding: '1.5rem 0',
       margin: '0',
       width: '100%',
     }
@@ -90,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
-      width: '20rem',
+      width: 'auto',
     }
   },
   avatar: {
@@ -106,7 +107,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     textAlign: 'justify',
     [theme.breakpoints.down('sm')]: {
-      width: '20rem'
+      width: 'auto',
+      padding: '1rem 0'
     }
   },
   descriptionHead: {
@@ -115,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '1rem'
   },
   descriptionBody : {
+    fontFamily: 'Cambria',
     fontSize: '16px',
     width: '100%'
   },
@@ -132,13 +135,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '1rem',
-    backgroundColor: 'lightgrey',
     heigth: '100%',
     width: '100%',
     borderRadius: '.75rem',
     marginLeft: '1rem',
     [theme.breakpoints.down('sm')]: {
-      display: 'flex',
+      display: 'block',
       margin: '1rem 0',
       marginRight: '0',
       padding: '0'
@@ -159,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
   },
   frontEndBar: {
     alignItems: 'center',
-    backgroundColor: '#FE222F',
+    backgroundColor: theme.palette.info.light,
     width: '60%',
     height: '100%',
     padding: '.25rem',
@@ -168,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
   },
   backEndBar: {
     alignItems: 'center',
-    backgroundColor: '#04B5FD',
+    backgroundColor: theme.palette.success.light,
     width: '40%',
     height: '100%',
     padding: '.25rem',
@@ -177,10 +179,19 @@ const useStyles = makeStyles((theme) => ({
   skillList: {
   },
   skillText: {
-    fontFamily: 'Oxygen',
+    fontFamily: 'Cambria',
   },
   listGrid: {
-    padding: '1rem'
+    padding: '1rem',
+    display: 'inline',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    [theme.breakpoints.down('sm')] : {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+    }
   },
   listItem: {
     display: 'flex',
@@ -189,7 +200,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      width: '25rem'
+      width: '100%'
     }
   },
   techGrid: {
@@ -224,19 +235,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '.5rem',
     borderRadius: '.5rem',
-    width: '30%',
+    width: '50%',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
-      padding: '.75rem',
       margin: '0 1rem'
     }
   },
   downloadIcon: {
-    border: '2px solid black',
-    marginRight: '.25rem',
-    borderRadius: '1rem',
+    marginRight: '1rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -280,8 +287,8 @@ function About() {
             </Typography>
           </Grid>
           <Grid className={classes.body}>
-            <Grid className={classes.mainContent}>
-              <Grid>
+            <Paper elevation={2} className={classes.mainContent}>
+              <Grid style={{padding: '1rem'}}>
                 <Grid className={classes.avatarGrid}>
                   <Avatar className={classes.avatar} alt="me" src={AvatarImg} />
                 </Grid>
@@ -310,11 +317,11 @@ function About() {
                   </Icon>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid className={classes.skillGrid}>
+            </Paper>
+            <Paper elevation={3} className={classes.skillGrid}>
               <Grid>
                 <Grid className={classes.skillHead}>
-                  <Typography variant='h5' className={classes.skillText}> Skill Set </Typography>
+                  <Typography variant='h4' className={classes.skillText}> Skill Set </Typography>
                 </Grid>
                 <hr />
                 <Grid className={classes.skillRatio}>
@@ -360,12 +367,12 @@ function About() {
                 <hr />
                 <Grid className={classes.downloadBtnGrid}>
                   <Button color='primary' variant='contained' className={classes.downloadBtn}>
-                    <Icon color='action' className={classes.downloadIcon}> <ArrowDownwardIcon /> </Icon>
+                    <Icon color='action' className={classes.downloadIcon}> <GetAppIcon /> </Icon>
                     Download my resume
                   </Button>
                 </Grid>
               </Grid>
-            </Grid>
+            </Paper>
           </Grid>
         </Grid>
       </Grid>
