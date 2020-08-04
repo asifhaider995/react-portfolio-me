@@ -10,7 +10,6 @@ import AvatarImg from '../assets/AvatarImg.jpg'
 
 const useStyles = makeStyles((theme) => ({
   root : {
-    width: '100%',
     alignItems: 'center',
     backgroundColor: '#F0F0F0',
     height: '45rem',
@@ -76,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 1rem',
     heigth: '100%',
     borderRadius: '.75rem',
+    [theme.breakpoints.down('md')]:{
+      height: '33rem'
+    },
     [theme.breakpoints.down('sm')]:{
       display: 'flex',
       padding: '1.5rem 0',
@@ -367,7 +369,7 @@ function About() {
                 <hr />
                 <Grid className={classes.downloadBtnGrid}>
                   <Button color='primary' variant='contained' className={classes.downloadBtn}>
-                    <Icon color='action' className={classes.downloadIcon}> <GetAppIcon /> </Icon>
+                    <Icon className={classes.downloadIcon} color='inherit'> <GetAppIcon /> </Icon>
                     Download my resume
                   </Button>
                 </Grid>

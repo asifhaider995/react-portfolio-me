@@ -3,7 +3,6 @@ import {Grid, Typography, Button, makeStyles} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root : {
-    width: '100%',
     height: '45rem',
     display: 'flex',
     alignItems: 'center',

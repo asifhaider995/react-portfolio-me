@@ -3,7 +3,6 @@ import {makeStyles} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root : {
-    width: '100%',
     alignItems: 'center',
     backgroundColor: 'red',
     height: '90rem'
