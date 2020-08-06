@@ -1,5 +1,5 @@
 import React from 'react'
-import {makeStyles, Paper, Grid, Typography, Icon} from '@material-ui/core'
+import {makeStyles, Grid, Typography, Icon, TextField, Button} from '@material-ui/core'
 
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -7,15 +7,20 @@ import PhoneIcon from '@material-ui/icons/Phone';
 const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
-    height: '38rem',
+    height: '52rem',
+    width: '100%',
+    backgroundColor: '#fffff1',
+    [theme.breakpoints.down('sm')]: {
+      height: '55rem'
+    }
   },
   outerGrid: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
+    width: '100%',
     margin: '1rem 0',
-    border: '1px black solid'
   },
   innerGrid: {
     display: 'inline',
@@ -34,7 +39,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   typoHead: {
-    fontSize: '3rem'
+    fontSize: '4rem',
+    fontFamily: 'Cambria',
+    fontWidth: '1rem',
+    fontStyle: 'capitalize'
   },
   infoGrid: {
     display: 'flex',
@@ -55,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     height: '3rem',
     border: '1px solid black',
     borderRadius: '.5rem',
-    marginRight: '5rem',
+    marginRight: '6rem',
     transitionDuration: '.5s',
     '&:hover' : {
       backgroundColor: theme.palette.error.dark,
@@ -63,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       marginRight: '0',
-      width: '20rem',
+      width: '100%',
       marginTop: '2rem',
       marginBottom: '2rem'
     }
@@ -84,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       marginLeft: '0',
-      width: '20rem',
+      width: '100%',
       marginTop: '2rem',
       marginBottom: '2rem'
     }
@@ -93,15 +101,66 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '0.75rem'
   },
   formGrid: {
-
+    display: 'flex',
+    alignItems: 'center',
+    justify: 'center',
+    width: '50rem',
+    margin: '1rem 0',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    }
+  },
+  formPaper: {
+    display: 'block',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '44.8rem',
+    height: '100%',
+    padding: '2.5rem',
+    borderRadius: '5px',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100%',
+      padding: '1rem 0',
+      paddingLeft: '0'
+    }
+  },
+  formField: {
+    margin: '1rem 0',
+    height: '100%',
+    borderRadius: '5px',
+    color: 'black'
+  },
+  formBtnGrid: {
+    paddingTop: '1rem',
+    width: '10rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    }
+  },
+  sendBtn: {
+    height: '2.75rem',
+    backgroundColor: 'white',
+    color: 'black',
+    border: '1px solid black',
+    borderRadius: '5px',
+    '&:hover': {
+      color: 'white',
+      backgroundColor: theme.palette.error.dark
+    }
   }
 }))
 
 
-function Contact() {
+function Contact(props) {
   const classes = useStyles();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <div id='about-root' className={classes.root}>
+    <div id='contact' className={classes.root}>
       <Grid className={classes.outerGrid}>
         <Grid className={classes.innerGrid}>
           <Grid className={classes.headingGrid}>
@@ -125,12 +184,50 @@ function Contact() {
               </Grid>
             </Grid>
             <Grid className={classes.formGrid}>
-              <form>
+              <form onSubmit={handleSubmit}>
+                <Grid className={classes.formPaper}>
+                  <Typography align='center'> You can leave me a message </Typography>
+                  <TextField
+                    name='name'
+                    placeholder='Your Name'
+                    label='Name'
+                    required
+                    fullWidth
+                    variant='outlined'
+                    error={true}
+                    helperText='What are you doing?'
+                    className={classes.formField}
+                  />
+                  <TextField
+                    name='email'
+                    placeholder='Your Email'
+                    label='Email'
+                    required
+                    fullWidth
+                    variant='outlined'
+                    error={true}
+                    helperText='What are you doing?'
+                    className={classes.formField}
+                  />
+                  <TextField
+                    multiline
+                    rows={5}
+                    placeholder='Your Message'
+                    label='Message'
+                    required
+                    fullWidth
+                    variant='outlined'
+                    error={true}
+                    helperText='What are you doing?'
+                    className={classes.formField}
+                  />
+                  <Grid className={classes.formBtnGrid}>
+                    <Button className={classes.sendBtn} variant='contained' fullWidth color='primary' type="submit"> Send Message </Button>
+                  </Grid>
+                </Grid>
               </form>
             </Grid>
           </Grid>
-          <Paper elevation={2}>
-          </Paper>
         </Grid>
       </Grid>
     </div>

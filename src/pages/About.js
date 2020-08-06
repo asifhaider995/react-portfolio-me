@@ -1,5 +1,6 @@
 import React from 'react'
 import {Grid, Paper, Typography, Avatar, Icon, Button, makeStyles} from '@material-ui/core'
+import {Element} from 'react-scroll';
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -11,8 +12,8 @@ import AvatarImg from '../assets/AvatarImg.jpg'
 const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
-    backgroundColor: '#F0F0F0',
-    height: '45rem',
+    backgroundColor: theme.palette.action.selected,
+    height: '52rem',
     [theme.breakpoints.down('sm')]:{
       height: '84rem'
     }
@@ -20,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
   outerGrid: {
     display: 'flex',
     alignItems: 'center',
-    padding: '2rem',
+    justifyContent: 'center',
+    margin: '1rem 0',
     borderRadius: '1rem',
     height: '100%',
     [theme.breakpoints.down('sm')]:{
@@ -43,16 +45,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    marginBottom: '1.5rem',
+    paddingTop: '5rem',
     [theme.breakpoints.down('sm')]:{
       margin: '1rem 0',
-      padding: '1rem 0'
+      paddingTop: '1rem'
     }
   },
   heading: {
-    fontSize: '3rem',
-    fontFamily: 'Roboto'
+    fontSize: '4rem',
+    fontFamily: 'Cambria',
+    fontWidth: '1rem',
+    fontStyle: 'capitalize'
   },
   body: {
     width: '100%',
@@ -182,6 +185,7 @@ const useStyles = makeStyles((theme) => ({
   },
   skillText: {
     fontFamily: 'Cambria',
+    fontStyle: 'capitalize'
   },
   listGrid: {
     padding: '1rem',
@@ -239,6 +243,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     borderRadius: '.5rem',
     width: '50%',
+    transitionDuration: '.75s',
+    '&:hover':  {
+      color: 'white',
+      backgroundColor: theme.palette.info.dark
+    },
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       margin: '0 1rem'
@@ -280,13 +289,15 @@ function About() {
     )
   }
   return (
-    <div id='about-root' className={classes.root}>
+    <div id='about' className={classes.root}>
       <Grid className={classes.outerGrid}>
         <Grid className={classes.innerGrid}>
           <Grid className={classes.headGrid}>
-            <Typography variant='h3' className={classes.heading}>
-              ABOUT ME
-            </Typography>
+            <Element name='about' className='element'>
+              <Typography variant='h3' className={classes.heading}>
+                About Me
+              </Typography>
+            </Element>
           </Grid>
           <Grid className={classes.body}>
             <Paper elevation={2} className={classes.mainContent}>
@@ -351,8 +362,8 @@ function About() {
                   <Grid className={classes.listGrid}>
                     <Grid className={classes.listItem}>
                       {techBlock("HTML5")}
-                      {techBlock("CSS3")}
-                      {techBlock("SCSS")}
+                      {techBlock("CSS3/SCSS")}
+                      {techBlock("Bootstrap 4")}
                     </Grid>
                     <Grid className={classes.listItem}>
                       {techBlock("Javascript")}
@@ -368,7 +379,7 @@ function About() {
                 </Grid>
                 <hr />
                 <Grid className={classes.downloadBtnGrid}>
-                  <Button color='primary' variant='contained' className={classes.downloadBtn}>
+                  <Button color='inherit' variant='outlined' className={classes.downloadBtn}>
                     <Icon className={classes.downloadIcon} color='inherit'> <GetAppIcon /> </Icon>
                     Download my resume
                   </Button>

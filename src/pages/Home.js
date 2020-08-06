@@ -76,7 +76,7 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <div id='home-root' className={classes.root}>
+    <div id='home' className={classes.root}>
       <Grid className={classes.outerGrid}>
         <Grid className={classes.innerGrid}>
           <Grid className={classes.typoGrid}>
