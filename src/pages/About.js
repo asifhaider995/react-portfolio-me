@@ -1,6 +1,6 @@
 import React from 'react'
 import {Grid, Paper, Typography, Avatar, Icon, Button, makeStyles} from '@material-ui/core'
-import {Element} from 'react-scroll';
+
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
     backgroundColor: theme.palette.action.selected,
+    width: '100%',
     height: '52rem',
     [theme.breakpoints.down('sm')]:{
       height: '84rem'
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: '5rem',
+    paddingBottom: '2rem',
     [theme.breakpoints.down('sm')]:{
       margin: '1rem 0',
       paddingTop: '1rem'
@@ -293,11 +295,9 @@ function About() {
       <Grid className={classes.outerGrid}>
         <Grid className={classes.innerGrid}>
           <Grid className={classes.headGrid}>
-            <Element name='about' className='element'>
-              <Typography variant='h3' className={classes.heading}>
-                About Me
-              </Typography>
-            </Element>
+            <Typography variant='h3' className={classes.heading}>
+              About Me
+            </Typography>
           </Grid>
           <Grid className={classes.body}>
             <Paper elevation={2} className={classes.mainContent}>

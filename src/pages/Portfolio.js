@@ -1,10 +1,10 @@
 import React from 'react'
-import {makeStyles, Grid, Typography} from '@material-ui/core'
+import {makeStyles, Grid, Typography, Paper, Card} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
-    height: '90rem'
+    height: '90rem',
   },
   outerGrid: {
     display: 'flex',
@@ -55,7 +55,17 @@ function Portfolio() {
           </Grid>
           <Grid className={classes.mainContent}>
             <Grid className={classes.projectList}>
-              <Typography align='center' variant='h5'> My Personal Projects </Typography>
+              <Grid className={classes.personalProjects}>
+                <Typography align='center' variant='h5'> My Personal Projects </Typography>
+                <Grid className={classes.personalProjectList}></Grid>
+              </Grid>
+              <Grid className={classes.otherProjects}>
+                <Typography align='center' variant='h5'> Other Projects </Typography>
+                <Grid className={classes.projectDirectories}>
+                  <Paper> <Card> Github </Card> </Paper>
+                  <Paper> <Card> Codepen </Card> </Paper>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

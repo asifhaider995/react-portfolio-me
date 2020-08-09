@@ -1,11 +1,20 @@
 import React from 'react'
-import {makeStyles, Toolbar, AppBar, Grid, Typography} from '@material-ui/core'
+import {makeStyles, Toolbar, AppBar, Grid, Typography, Menu, MenuItem, IconButton, Icon} from '@material-ui/core'
+import MoreIcon from '@material-ui/icons/MoreVert';
+import HomeIcon from '@material-ui/icons/Home';
+import InfoIcon from '@material-ui/icons/Info';
+import DescriptionIcon from '@material-ui/icons/Description';
+import ContactsIcon from '@material-ui/icons/Contacts';
+
 import {Link} from 'react-scroll';
+
+
 const useStyles = makeStyles((theme)=> ({
   root: {
     height: '4rem',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
-      height: '4.5rem'
+      height: '4.5rem',
     }
   },
   logo: {
@@ -52,12 +61,121 @@ const useStyles = makeStyles((theme)=> ({
       cursor: 'pointer',
     },
   },
+  navBtnMobile: {
+    width: '100%',
+  },
   activeNavBtn: {
-    color: theme.palette.error.dark
-  }
+    color: theme.palette.error.dark,
+  },
+  sectionMobile: {
+    display: 'none',
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex'
+    }
+  },
+  navBtnIconsMobile: {
+    display: 'inline-block',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: '5px',
+    marginBottom: '-5px'
+  },
+
 }))
+
+
+
 function Navbar(props) {
   const classes = useStyles();
+
+
+  /////////// Mobile Menu /////////////////////////////////////
+
+  const [mobileAnchorEl, setMobileAnchorEl] = React.useState(null);
+
+  const handleMobileMenuClose = () => {
+   setMobileAnchorEl(null);
+  };
+
+  const handleMobileMenuOpen = (event) => {
+   setMobileAnchorEl(event.currentTarget);
+  };
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+    <Grid>
+      <Menu
+       anchorEl={mobileAnchorEl}
+       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+       id={mobileMenuId}
+       keepMounted
+       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+       open={Boolean(mobileAnchorEl)}
+       onClose={handleMobileMenuClose}
+      >
+        <MenuItem>
+          <Link
+           activeClass={classes.activeNavBtn}
+           to="home"
+           spy={true}
+           smooth="easeInOutQuad"
+           offset={-70}
+           duration={1400}
+           onClick={handleMobileMenuClose}
+          >
+            <Icon className={classes.navBtnIconsMobile}> <HomeIcon /> </Icon>
+            <Typography variant='button' align='center' className={classes.navBtnMobile}>
+              Home
+            </Typography>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+           activeClass={classes.activeNavBtn}
+           to="about"
+           spy={true}
+           smooth="easeInOutQuad"
+           offset={-70}
+           duration={1400}
+           onClick={handleMobileMenuClose}
+          >
+            <Icon className={classes.navBtnIconsMobile}> <InfoIcon /> </Icon>
+            <Typography variant='button' align='center' className={classes.navBtnMobile}>About</Typography>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+            activeClass={classes.activeNavBtn}
+            to="portfolio"
+            spy={true}
+            smooth="easeInOutQuad"
+            offset={-70}
+            duration={1400}
+            onClick={handleMobileMenuClose}
+          >
+            <Icon className={classes.navBtnIconsMobile}> <DescriptionIcon /> </Icon>
+            <Typography variant='button' align='center' className={classes.navBtnMobile}>Portfolio</Typography>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+            activeClass={classes.activeNavBtn}
+            to="contact"
+            spy={true}
+            smooth="easeInOutQuad"
+            offset={-70}
+            duration={1400}
+            onClick={handleMobileMenuClose}
+          >
+            <Icon className={classes.navBtnIconsMobile}> <ContactsIcon /> </Icon>
+            <Typography variant='button' align='center' className={classes.navBtnMobile}>Contact</Typography>
+          </Link>
+        </MenuItem>
+      </Menu>
+    </Grid>
+  );
+
+  /////////////////////////////////////////////////////////////
 
   return (
     <AppBar className={classes.root} color='inherit' position='fixed'>
@@ -113,20 +231,31 @@ function Navbar(props) {
             </Link>
           </Grid>
           <Grid className={classes.btnInnerGrid}>
-          <Link
-            activeClass={classes.activeNavBtn}
-            to="contact"
-            spy={true}
-            smooth="easeInOutQuad"
-            offset={-70}
-            duration={1000}
-          >
-            <Typography variant='button' align='center' className={classes.navBtn}>Contact</Typography>
-          </Link>
+            <Link
+              activeClass={classes.activeNavBtn}
+              to="contact"
+              spy={true}
+              smooth="easeInOutQuad"
+              offset={-70}
+              duration={1000}
+            >
+              <Typography variant='button' align='center' className={classes.navBtn}>Contact</Typography>
+            </Link>
           </Grid>
         </Grid>
-
+        <Grid className={classes.sectionMobile}>
+            <IconButton
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon />
+            </IconButton>
+          </Grid>
       </Toolbar>
+      {renderMobileMenu}
     </AppBar>
   )
 }

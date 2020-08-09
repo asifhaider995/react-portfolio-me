@@ -6,11 +6,8 @@ const useStyles = makeStyles((theme)=> ({
   root: {
     height: '13%',
     backgroundColor: theme.palette.text.primary,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     color: 'white',
-    width: '99%',
+    width: '97%',
     position: 'absolute'
   },
   outerGrid: {
