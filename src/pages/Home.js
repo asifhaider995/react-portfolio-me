@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     diplay: 'inline-block',
     justifyContent: 'center',
     textAlign: 'center',
-    width: '70%',
+    width: '100%',
     padding: '3.5rem',
     backgroundColor: 'lightgrey',
     borderRadius: '1rem',
@@ -80,7 +80,7 @@ function Home() {
       <Grid className={classes.outerGrid}>
         <Grid className={classes.innerGrid}>
           <Grid className={classes.typoGrid}>
-            <Typography gutterBottom className={classes.typo} variant='h3'> Welcome to my Portfolio Website </Typography>
+            <Typography gutterBottom className={classes.typo} variant='h3'> You have reached my Portfolio Website :)</Typography>
           </Grid>
           <Grid className={classes.btnGrid}>
             <Button className={classes.btn} variant='contained' color='primary'> View my Portfolio </Button>

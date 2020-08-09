@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme)=> ({
   spaceGrid: {
     width: theme.spacing(100),
     [theme.breakpoints.down('md')] : {
-      width: 'auto'
+      width: '100%'
     }
   },
   btnGrid: {
@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme)=> ({
     paddingRight: theme.spacing(2),
     paddingLeft: theme.spacing(2),
     width: theme.spacing(14),
-
   },
   navBtn: {
     width: '100%',
@@ -244,16 +243,16 @@ function Navbar(props) {
           </Grid>
         </Grid>
         <Grid className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Grid>
+          <IconButton
+            aria-label="show more"
+            aria-controls={mobileMenuId}
+            aria-haspopup="true"
+            onClick={handleMobileMenuOpen}
+            color="inherit"
+          >
+            <MoreIcon />
+          </IconButton>
+        </Grid>
       </Toolbar>
       {renderMobileMenu}
     </AppBar>

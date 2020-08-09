@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme)=> ({
     height: '13%',
     backgroundColor: theme.palette.text.primary,
     color: 'white',
-    width: '97%',
+    width: '99%',
     position: 'absolute'
   },
   outerGrid: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme)=> ({
   },
   scrollToTopBtn: {
     transform: 'rotate(-90deg)',
-    bottom: '1.5rem',
+    bottom: '1.3rem',
     [theme.breakpoints.down('sm')]:{
       bottom: '1rem',
     }
