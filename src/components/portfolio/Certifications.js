@@ -1,6 +1,6 @@
-import React from 'react'
-import {makeStyles,Modal, Grid, Typography, Paper, CardActionArea, CardMedia, CardContent} from '@material-ui/core'
-
+import React, {useState, useEffect} from 'react'
+import {makeStyles, IconButton, Modal, Grid, Typography, Paper, CardActionArea, CardMedia, CardContent} from '@material-ui/core'
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Cert1 from '../../assets/FCCRW.png';
 import Cert2 from '../../assets/FCCJS.png';
 import Cert3 from '../../assets/FCCFEL.png';
@@ -70,6 +70,17 @@ const useStyles = makeStyles((theme) => ({
       height: '13rem',
     }
   },
+  crossIcon: {
+    float: 'right',
+    bottom: '3.75rem',
+    right: '.5rem',
+    transform: 'scale(1.6,1.6)',
+    [theme.breakpoints.down('sm')]: {
+      bottom: '6rem',
+      right: '-1rem',
+      transform: 'scale(1,1)',
+    }
+  }
 
 }))
 
@@ -101,11 +112,24 @@ const certificationItems = [
 
 function Certifications() {
   const classes = useStyles();
-  const [modal, setModal] = React.useState(false);
+  const [modal, setModal] = useState([]);
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    setModal(true)
+  useEffect(()=>{
+    let arr = []
+    certificationItems.map((items)=>{
+      return arr.push(false)
+    })
+    setModal(arr)
+  },[])
+
+  const handleClick = (id) => {
+    let arr = []
+    certificationItems.map((items,i)=>{
+      if(i === id) {
+        return arr.push(true)
+      } return arr.push(false)
+    })
+    setModal(arr)
   }
   const handleClose = (e) => {
     e.preventDefault();
@@ -128,7 +152,7 @@ function Certifications() {
                   className={classes.certItem}
                 >
                   <Paper elevation={3} className={classes.card}>
-                    <CardActionArea onClick={handleClick} id={i}>
+                    <CardActionArea onClick={(id) => handleClick(i)}>
                       <CardMedia
                         className={classes.media}
                         image={items.img}
@@ -147,15 +171,15 @@ function Certifications() {
               return(
                 <Grid key={i}>
                   <Modal
-                    open={modal}
+                    open={modal[i] !== undefined && modal[i]}
                     onClose={handleClose}
                     aria-labelledby="certificate-modal-title"
                     aria-describedby="certificate-modal-description"
                     className={classes.certModal}
                   >
                     <Paper elevation={3} style={{padding: '1rem'}}>
-                      <Typography variant='h4' align='center'>{items.title}</Typography>
-                      <Grid></Grid>
+                      <Typography style={{margin: '1rem 0'}} variant='h4' align='center'>{items.title}</Typography>
+                      <IconButton className={classes.crossIcon} onClick={handleClose}><CloseRoundedIcon /></IconButton>
                       <Grid style={{display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
                         <CardMedia title={items.title} image={items.img} className={classes.modalMedia} />
                       </Grid>
