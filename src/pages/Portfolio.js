@@ -7,10 +7,7 @@ import Certifications from '../components/portfolio/Certifications'
 const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
-    height: '96rem',
-    [theme.breakpoints.down('sm')]: {
-      height: '150rem',
-    }
+    height: '100%',
   },
   outerGrid: {
     display: 'flex',
@@ -18,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     height: '100%',
     margin: '1rem 0',
-    border: '1px black solid'
   },
   innerGrid: {
     display: 'inline-block',
@@ -46,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%',
     [theme.breakpoints.down('sm')]: {
       display: 'block'
     }
@@ -53,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
   projectList: {
     display: 'block',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    height: '100%'
   },
   heading: {
     display: 'flex',

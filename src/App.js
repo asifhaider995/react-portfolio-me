@@ -17,7 +17,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div style={{height: '200rem'}}>
+    <div style={{height: '100%'}}>
       <Navbar />
       <Home />
       <About />

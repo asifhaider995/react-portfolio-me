@@ -8,6 +8,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import AvatarImg from '../assets/AvatarImg.jpg'
+import Resume from '../files/Resume.pdf'
 
 const useStyles = makeStyles((theme) => ({
   root : {
@@ -273,6 +274,15 @@ const useStyles = makeStyles((theme) => ({
 
 function About() {
   const classes = useStyles();
+  const handleDownload = (event) => {
+    event.preventDefault()
+    const link = document.createElement('a');
+    link.href = Resume;
+    link.target ='_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
   const description = (
     <Grid className={classes.description}>
       <Typography variant='h5' align='center' className={classes.descriptionHead}>Who am I?</Typography>
@@ -379,7 +389,7 @@ function About() {
                 </Grid>
                 <hr />
                 <Grid className={classes.downloadBtnGrid}>
-                  <Button color='inherit' variant='outlined' className={classes.downloadBtn}>
+                  <Button onClick={handleDownload} color='inherit' variant='outlined' className={classes.downloadBtn}>
                     <Icon className={classes.downloadIcon} color='inherit'> <GetAppIcon /> </Icon>
                     Download my resume
                   </Button>

@@ -1,16 +1,16 @@
 import React from 'react'
-import {makeStyles, Grid, Typography, Icon, TextField, Button} from '@material-ui/core'
+import {makeStyles, fade, Grid, Typography, Icon, TextField, Button} from '@material-ui/core'
 
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
- 
+
 
 const useStyles = makeStyles((theme) => ({
   root : {
     alignItems: 'center',
     height: '52rem',
     width: '100%',
-    backgroundColor: '#fffff1',
+    backgroundColor: fade(theme.palette.info.light, 0.1),
     [theme.breakpoints.down('sm')]: {
       height: '55rem'
     }
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 0',
     height: '100%',
     borderRadius: '5px',
-    color: 'black'
+    color: 'black',
   },
   formBtnGrid: {
     paddingTop: '1rem',
@@ -195,7 +195,7 @@ function Contact(props) {
                     required
                     fullWidth
                     variant='outlined'
-                    error={true}
+                    error={false}
                     helperText='What are you doing?'
                     className={classes.formField}
                   />
@@ -206,7 +206,7 @@ function Contact(props) {
                     required
                     fullWidth
                     variant='outlined'
-                    error={true}
+                    error={false}
                     helperText='What are you doing?'
                     className={classes.formField}
                   />
@@ -218,7 +218,7 @@ function Contact(props) {
                     required
                     fullWidth
                     variant='outlined'
-                    error={true}
+                    error={false}
                     helperText='What are you doing?'
                     className={classes.formField}
                   />

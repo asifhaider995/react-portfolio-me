@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems:'center',
     justifyContent: 'center',
     width: '70rem',
-    height: '10rem',
+    height: '100%',
     padding: '1rem',
     [theme.breakpoints.down('sm')]: {
       display: 'block',
